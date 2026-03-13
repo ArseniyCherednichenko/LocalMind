@@ -1,0 +1,271 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#0d1a0d"/>
+    </linearGradient>
+    <linearGradient id="green-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ff41;stop-opacity:0"/>
+      <stop offset="50%" style="stop-color:#00ff41;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#00ff41;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ff41"/>
+      <stop offset="60%" style="stop-color:#7fff7f"/>
+      <stop offset="100%" style="stop-color:#00cc33"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="led-glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00ff41" stroke-width="0.15" opacity="0.2"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="400" fill="url(#bg)"/>
+  <rect width="1200" height="400" fill="url(#grid)"/>
+  <ellipse cx="600" cy="200" rx="500" ry="200" fill="#00ff41" opacity="0.03"/>
+
+  <!-- LEFT TEXT -->
+  <text x="80" y="95" font-family="'Courier New', monospace" font-size="11" fill="#00ff41" opacity="0.7" letter-spacing="4">HACK CLUB BLUEPRINT — 2026</text>
+  <line x1="80" y1="105" x2="320" y2="105" stroke="#00ff41" stroke-width="0.5" opacity="0.4"/>
+  <text x="78" y="175" font-family="'Courier New', monospace" font-size="72" font-weight="bold" fill="url(#title-grad)" filter="url(#glow)" letter-spacing="-2">LocalMind</text>
+  <text x="82" y="215" font-family="'Courier New', monospace" font-size="16" fill="#7fff7f" opacity="0.85" letter-spacing="1">Raspberry Pi 5 AI Agent HAT</text>
+  <line x1="80" y1="235" x2="560" y2="235" stroke="url(#green-glow)" stroke-width="1" opacity="0.6"/>
+  <text x="82" y="262" font-family="'Courier New', monospace" font-size="13" fill="#00ff41" opacity="0.6">Custom PCB · OLED Status Display · OpenClaw AI</text>
+  <rect x="82" y="285" width="90" height="26" rx="3" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+  <text x="127" y="302" font-family="'Courier New', monospace" font-size="11" fill="#00ff41" text-anchor="middle">KiCad PCB</text>
+  <rect x="184" y="285" width="100" height="26" rx="3" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+  <text x="234" y="302" font-family="'Courier New', monospace" font-size="11" fill="#00ff41" text-anchor="middle">Fusion 360</text>
+  <rect x="296" y="285" width="110" height="26" rx="3" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
+  <text x="351" y="302" font-family="'Courier New', monospace" font-size="11" fill="#00ff41" text-anchor="middle">Python / GPIO</text>
+  <text x="82" y="355" font-family="'Courier New', monospace" font-size="11" fill="#00ff41" opacity="0.35" letter-spacing="2">github.com/ArseniyCherednichenko/LocalMind</text>
+  <line x1="660" y1="40" x2="660" y2="360" stroke="#00ff41" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- =============================================
+       PCB BOARD
+       Real layout from KiCad screenshots:
+       - J1 (40-pin header): far left, tall, vertical
+       - J2 (4-pin OLED): to the right of J1, top area
+       - R1 (resistor): right of center, horizontal
+       - D1 (LED): right of R1, circular
+       - SW1 (button): below J2, square 4-leg
+       Board: 73.5 x 59.5mm → scaled ~4.8px/mm
+       Board at x=685 y=42, w=353 h=286
+       ============================================= -->
+
+  <!-- Board shadow -->
+  <rect x="691" y="48" width="353" height="286" rx="5" fill="#000500" opacity="0.8"/>
+
+  <!-- PCB FR4 base -->
+  <rect x="685" y="42" width="353" height="286" rx="5" fill="#0c2010"/>
+
+  <!-- GND copper flood (red, F.Cu, covers most of board) -->
+  <rect x="689" y="46" width="345" height="278" rx="3" fill="#7a1515" opacity="0.6"/>
+
+  <!-- Edge.Cuts outline (yellow) -->
+  <rect x="685" y="42" width="353" height="286" rx="5" fill="none" stroke="#aaaa00" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Silkscreen inner border -->
+  <rect x="691" y="48" width="341" height="274" rx="3" fill="none" stroke="#c8c87f" stroke-width="0.6" stroke-dasharray="5,4" opacity="0.3"/>
+
+  <!-- ====== J1: 40-pin Pi header — left side ====== -->
+  <!-- Body: x=696 y=57, w=22, h=218 -->
+  <rect x="695" y="57" width="24" height="218" rx="2" fill="#251500" stroke="#c8900a" stroke-width="1.3"/>
+
+  <!-- Pin 1 square marker -->
+  <rect x="698" y="60" width="7" height="7" rx="0" fill="#c8a050"/>
+  <rect x="700" y="62" width="3" height="3" fill="#1a0a00"/>
+
+  <!-- All 20 rows of pins — left col x=703, right col x=712, spacing 11px -->
+  <g fill="#c8a050">
+    <circle cx="703" cy="66" r="4"/><circle cx="715" cy="66" r="4"/>
+    <circle cx="703" cy="77" r="4"/><circle cx="715" cy="77" r="4"/>
+    <circle cx="703" cy="88" r="4"/><circle cx="715" cy="88" r="4"/>
+    <circle cx="703" cy="99" r="4"/><circle cx="715" cy="99" r="4"/>
+    <circle cx="703" cy="110" r="4"/><circle cx="715" cy="110" r="4"/>
+    <circle cx="703" cy="121" r="4"/><circle cx="715" cy="121" r="4"/>
+    <circle cx="703" cy="132" r="4"/><circle cx="715" cy="132" r="4"/>
+    <circle cx="703" cy="143" r="4"/><circle cx="715" cy="143" r="4"/>
+    <circle cx="703" cy="154" r="4"/><circle cx="715" cy="154" r="4"/>
+    <circle cx="703" cy="165" r="4"/><circle cx="715" cy="165" r="4"/>
+    <circle cx="703" cy="176" r="4"/><circle cx="715" cy="176" r="4"/>
+    <circle cx="703" cy="187" r="4"/><circle cx="715" cy="187" r="4"/>
+    <circle cx="703" cy="198" r="4"/><circle cx="715" cy="198" r="4"/>
+    <circle cx="703" cy="209" r="4"/><circle cx="715" cy="209" r="4"/>
+    <circle cx="703" cy="220" r="4"/><circle cx="715" cy="220" r="4"/>
+    <circle cx="703" cy="231" r="4"/><circle cx="715" cy="231" r="4"/>
+    <circle cx="703" cy="242" r="4"/><circle cx="715" cy="242" r="4"/>
+    <circle cx="703" cy="253" r="4"/><circle cx="715" cy="253" r="4"/>
+    <circle cx="703" cy="264" r="4"/><circle cx="715" cy="264" r="4"/>
+    <circle cx="703" cy="275" r="4"/><circle cx="715" cy="275" r="4"/>
+  </g>
+  <!-- Drill holes -->
+  <g fill="#0c2010">
+    <circle cx="703" cy="66" r="2"/><circle cx="715" cy="66" r="2"/>
+    <circle cx="703" cy="77" r="2"/><circle cx="715" cy="77" r="2"/>
+    <circle cx="703" cy="88" r="2"/><circle cx="715" cy="88" r="2"/>
+    <circle cx="703" cy="99" r="2"/><circle cx="715" cy="99" r="2"/>
+    <circle cx="703" cy="110" r="2"/><circle cx="715" cy="110" r="2"/>
+    <circle cx="703" cy="121" r="2"/><circle cx="715" cy="121" r="2"/>
+    <circle cx="703" cy="132" r="2"/><circle cx="715" cy="132" r="2"/>
+    <circle cx="703" cy="143" r="2"/><circle cx="715" cy="143" r="2"/>
+    <circle cx="703" cy="154" r="2"/><circle cx="715" cy="154" r="2"/>
+    <circle cx="703" cy="165" r="2"/><circle cx="715" cy="165" r="2"/>
+    <circle cx="703" cy="176" r="2"/><circle cx="715" cy="176" r="2"/>
+    <circle cx="703" cy="187" r="2"/><circle cx="715" cy="187" r="2"/>
+    <circle cx="703" cy="198" r="2"/><circle cx="715" cy="198" r="2"/>
+    <circle cx="703" cy="209" r="2"/><circle cx="715" cy="209" r="2"/>
+    <circle cx="703" cy="220" r="2"/><circle cx="715" cy="220" r="2"/>
+    <circle cx="703" cy="231" r="2"/><circle cx="715" cy="231" r="2"/>
+    <circle cx="703" cy="242" r="2"/><circle cx="715" cy="242" r="2"/>
+    <circle cx="703" cy="253" r="2"/><circle cx="715" cy="253" r="2"/>
+    <circle cx="703" cy="264" r="2"/><circle cx="715" cy="264" r="2"/>
+    <circle cx="703" cy="275" r="2"/><circle cx="715" cy="275" r="2"/>
+  </g>
+  <!-- J1 silkscreen label -->
+  <text x="709" y="290" font-family="'Courier New', monospace" font-size="7" fill="#c8c87f" text-anchor="middle" opacity="0.7">J1</text>
+
+  <!-- ====== COPPER TRACES (red, F.Cu) ====== -->
+  <!-- Pin 1 → +3V3 (up and left) -->
+  <polyline points="703,66 693,66 693,52" fill="none" stroke="#cc2222" stroke-width="2.5" opacity="0.95"/>
+  <!-- Pin 3 SDA → right toward J2 -->
+  <polyline points="715,88 750,88 750,72 762,72" fill="none" stroke="#cc2222" stroke-width="2.5" opacity="0.95"/>
+  <!-- Pin 5 SCL → right toward J2 -->
+  <polyline points="715,110 748,110 748,83 762,83" fill="none" stroke="#cc2222" stroke-width="2.5" opacity="0.95"/>
+  <!-- Pin 6 GND — short stub down -->
+  <polyline points="715,99 730,99 730,305" fill="none" stroke="#cc2222" stroke-width="2" opacity="0.7"/>
+  <!-- Pin 7 GPIO4 → R1 (long horizontal trace) -->
+  <polyline points="715,121 840,121 840,170" fill="none" stroke="#cc2222" stroke-width="2.5" opacity="0.95"/>
+  <!-- Pin 9 GND → LED cathode area -->
+  <polyline points="715,132 736,132 736,305" fill="none" stroke="#cc2222" stroke-width="2" opacity="0.7"/>
+  <!-- Pin 11 GPIO17 → SW1 -->
+  <polyline points="715,154 770,154 770,220" fill="none" stroke="#cc2222" stroke-width="2.5" opacity="0.95"/>
+  <!-- R1 → D1 trace -->
+  <line x1="876" y1="177" x2="908" y2="177" stroke="#cc2222" stroke-width="2.5" opacity="0.95"/>
+  <!-- D1 cathode → GND flood (short stub) -->
+  <line x1="940" y1="177" x2="960" y2="177" stroke="#cc2222" stroke-width="2" opacity="0.7"/>
+  <!-- SW1 → GND -->
+  <polyline points="770,248 770,305" fill="none" stroke="#cc2222" stroke-width="2" opacity="0.7"/>
+
+  <!-- +3V3 power symbol -->
+  <line x1="693" y1="52" x2="693" y2="46" stroke="#c8c87f" stroke-width="1.5"/>
+  <polyline points="688,50 693,44 698,50" fill="none" stroke="#c8c87f" stroke-width="1.5"/>
+  <text x="693" y="42" font-family="'Courier New', monospace" font-size="7" fill="#c8c87f" text-anchor="middle" opacity="0.8">+3V3</text>
+
+  <!-- GND symbol bottom -->
+  <line x1="736" y1="305" x2="736" y2="312" stroke="#c8c87f" stroke-width="1.5"/>
+  <line x1="730" y1="312" x2="742" y2="312" stroke="#c8c87f" stroke-width="2"/>
+  <line x1="732" y1="316" x2="740" y2="316" stroke="#c8c87f" stroke-width="1.5"/>
+  <line x1="734" y1="320" x2="738" y2="320" stroke="#c8c87f" stroke-width="1"/>
+
+  <!-- ====== J2: OLED 4-pin connector ====== -->
+  <rect x="762" y="62" width="11" height="50" rx="2" fill="#251500" stroke="#c8900a" stroke-width="1.2"/>
+  <!-- Square pin 1 marker -->
+  <rect x="764" y="65" width="7" height="7" fill="#c8a050"/>
+  <rect x="766" y="67" width="3" height="3" fill="#1a0a00"/>
+  <g fill="#c8a050">
+    <circle cx="768" cy="69" r="3.5"/>
+    <circle cx="768" cy="80" r="3.5"/>
+    <circle cx="768" cy="91" r="3.5"/>
+    <circle cx="768" cy="102" r="3.5"/>
+  </g>
+  <g fill="#0c2010">
+    <circle cx="768" cy="69" r="1.8"/>
+    <circle cx="768" cy="80" r="1.8"/>
+    <circle cx="768" cy="91" r="1.8"/>
+    <circle cx="768" cy="102" r="1.8"/>
+  </g>
+  <!-- Net labels for SDA/SCL -->
+  <rect x="775" y="77" width="22" height="8" rx="1" fill="#000060" opacity="0.85"/>
+  <text x="786" y="83" font-family="'Courier New', monospace" font-size="5.5" fill="#8888ff" text-anchor="middle">SDA</text>
+  <rect x="775" y="88" width="22" height="8" rx="1" fill="#000060" opacity="0.85"/>
+  <text x="786" y="94" font-family="'Courier New', monospace" font-size="5.5" fill="#8888ff" text-anchor="middle">SCL</text>
+  <text x="768" y="122" font-family="'Courier New', monospace" font-size="7" fill="#c8c87f" text-anchor="middle" opacity="0.7">J2</text>
+  <text x="768" y="131" font-family="'Courier New', monospace" font-size="6" fill="#c8c87f" text-anchor="middle" opacity="0.5">OLED</text>
+
+  <!-- ====== R1: 330 ohm resistor (horizontal) ====== -->
+  <!-- Wire stubs -->
+  <line x1="825" y1="177" x2="840" y2="177" stroke="#c8a050" stroke-width="2"/>
+  <line x1="876" y1="177" x2="891" y2="177" stroke="#c8a050" stroke-width="2"/>
+  <!-- Annular rings -->
+  <circle cx="825" cy="177" r="4.5" fill="#c8a050"/>
+  <circle cx="825" cy="177" r="2.2" fill="#0c2010"/>
+  <circle cx="891" cy="177" r="4.5" fill="#c8a050"/>
+  <circle cx="891" cy="177" r="2.2" fill="#0c2010"/>
+  <!-- Body -->
+  <rect x="840" y="170" width="36" height="14" rx="3" fill="#c0a060" stroke="#907030" stroke-width="1"/>
+  <!-- Color bands: 330Ω = orange orange brown gold -->
+  <rect x="847" y="170" width="3" height="14" fill="#ff7700" rx="0.5"/>
+  <rect x="853" y="170" width="3" height="14" fill="#ff7700" rx="0.5"/>
+  <rect x="859" y="170" width="3" height="14" fill="#7b3f00" rx="0.5"/>
+  <rect x="869" y="170" width="2" height="14" fill="#c8b400" rx="0.5"/>
+  <!-- Silkscreen -->
+  <text x="858" y="163" font-family="'Courier New', monospace" font-size="7" fill="#c8c87f" text-anchor="middle" opacity="0.8">R1 330</text>
+  <text x="858" y="156" font-family="'Courier New', monospace" font-size="6" fill="#c8c87f" text-anchor="middle" opacity="0.5">—[===]—</text>
+
+  <!-- ====== D1: 5mm LED (right of R1) ====== -->
+  <!-- Outer courtyard ring -->
+  <circle cx="925" cy="177" r="17" fill="none" stroke="#c8c87f" stroke-width="0.6" opacity="0.3"/>
+  <!-- Copper annular rings (anode + cathode) -->
+  <circle cx="908" cy="177" r="5" fill="#c8a050"/>
+  <circle cx="908" cy="177" r="2.5" fill="#0c2010"/>
+  <circle cx="942" cy="177" r="5" fill="#c8a050"/>
+  <circle cx="942" cy="177" r="2.5" fill="#0c2010"/>
+  <!-- LED body circle -->
+  <circle cx="925" cy="177" r="12" fill="#0c1a0c" stroke="#1e3a1e" stroke-width="1"/>
+  <!-- LED dome glow -->
+  <circle cx="925" cy="177" r="9" fill="#003300" opacity="0.5"/>
+  <circle cx="925" cy="177" r="7" fill="#00aa00" opacity="0.4"/>
+  <circle cx="925" cy="177" r="5" fill="#00ff41" opacity="0.95" filter="url(#led-glow)"/>
+  <!-- Specular highlight -->
+  <circle cx="922" cy="174" r="2" fill="#ffffff" opacity="0.5"/>
+  <!-- Flat side (cathode indicator) line -->
+  <line x1="936" y1="168" x2="936" y2="186" stroke="#c8c87f" stroke-width="1" opacity="0.6"/>
+  <!-- Silkscreen triangle symbol -->
+  <text x="925" y="203" font-family="'Courier New', monospace" font-size="7" fill="#c8c87f" text-anchor="middle" opacity="0.7">D1</text>
+  <text x="925" y="212" font-family="'Courier New', monospace" font-size="6" fill="#00ff41" text-anchor="middle" opacity="0.6">LED_Green</text>
+
+  <!-- ====== SW1: 6mm tactile push button ====== -->
+  <!-- Button body -->
+  <rect x="757" y="218" width="26" height="26" rx="3" fill="#1c1c1c" stroke="#505050" stroke-width="1.2"/>
+  <!-- Metal dome -->
+  <circle cx="770" cy="231" r="9" fill="#252525" stroke="#505050" stroke-width="0.8"/>
+  <circle cx="770" cy="231" r="5" fill="#303030"/>
+  <circle cx="770" cy="231" r="2.5" fill="#404040"/>
+  <!-- 4 through-hole pins -->
+  <circle cx="759" cy="220" r="4" fill="#c8a050"/>
+  <circle cx="759" cy="220" r="2" fill="#0c2010"/>
+  <circle cx="781" cy="220" r="4" fill="#c8a050"/>
+  <circle cx="781" cy="220" r="2" fill="#0c2010"/>
+  <circle cx="759" cy="242" r="4" fill="#c8a050"/>
+  <circle cx="759" cy="242" r="2" fill="#0c2010"/>
+  <circle cx="781" cy="242" r="4" fill="#c8a050"/>
+  <circle cx="781" cy="242" r="2" fill="#0c2010"/>
+  <!-- Silkscreen -->
+  <text x="770" y="256" font-family="'Courier New', monospace" font-size="7" fill="#c8c87f" text-anchor="middle" opacity="0.7">SW1</text>
+  <text x="770" y="265" font-family="'Courier New', monospace" font-size="5.5" fill="#c8c87f" text-anchor="middle" opacity="0.5">SHUTDOWN</text>
+
+  <!-- Mounting holes corners -->
+  <circle cx="695" cy="52" r="3.5" fill="#0c2010" stroke="#c8a050" stroke-width="1" opacity="0.7"/>
+  <circle cx="695" cy="52" r="1.5" fill="#000"/>
+  <circle cx="1028" cy="52" r="3.5" fill="#0c2010" stroke="#c8a050" stroke-width="1" opacity="0.7"/>
+  <circle cx="1028" cy="52" r="1.5" fill="#000"/>
+  <circle cx="695" cy="318" r="3.5" fill="#0c2010" stroke="#c8a050" stroke-width="1" opacity="0.7"/>
+  <circle cx="695" cy="318" r="1.5" fill="#000"/>
+  <circle cx="1028" cy="318" r="3.5" fill="#0c2010" stroke="#c8a050" stroke-width="1" opacity="0.7"/>
+  <circle cx="1028" cy="318" r="1.5" fill="#000"/>
+
+  <!-- Silkscreen project name -->
+  <text x="950" y="310" font-family="'Courier New', monospace" font-size="8" fill="#c8c87f" opacity="0.3" text-anchor="end">LocalMind HAT v1.0</text>
+
+  <!-- Bottom bar -->
+  <line x1="0" y1="390" x2="1200" y2="390" stroke="url(#green-glow)" stroke-width="1" opacity="0.4"/>
+  <text x="600" y="385" font-family="'Courier New', monospace" font-size="9" fill="#00ff41" text-anchor="middle" opacity="0.25" letter-spacing="3">OPEN SOURCE HARDWARE — HACK CLUB BLUEPRINT 2026</text>
+</svg>
